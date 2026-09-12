@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>家园 · 中阳刺绣数字长卷</title><link rel="stylesheet" href="style.css?v=20260912-12"></head>
+<body>
+<main id="app">
+  <div id="paperCut" class="paper-cut" aria-hidden="true"><img src="assets/figma/papercut-bg.png" alt=""></div>
+  <section id="home" class="view">
+    <img class="home-overlay" src="assets/figma/home-overlay.png" alt="" aria-hidden="true">
+    <div id="stage" class="stage" aria-label="可缩放拖动的刺绣长卷">
+      <img class="scroll-art" src="assets/figma/embroidery.png" alt="中阳刺绣长卷《家园》">
+      <div id="pins" class="pins"></div>
+    </div>
+    <div class="controls">
+      <button id="zoomOut" title="缩小">−</button><span id="zoomText">100%</span><button id="zoomIn" title="放大">＋</button><button id="reset" title="复位">↺</button>
+    </div>
+    <button id="workInfo" class="work-info" aria-label="作品信息"><img src="assets/figma/work-info-clean.png" alt="作品信息"></button>
+    <div class="bottom-bar">
+      <nav id="tabs" class="tabs"><button data-tab="俗韵" class="active">俗韵</button><button data-tab="风物">风物</button><button data-tab="绣工">绣工</button></nav>
+      <div id="entries" class="entries"></div>
+    </div>
+    <p class="gesture-tip">滚轮缩放 · 按住画卷拖动</p>
+  </section>
+
+  <section id="intro" class="view is-hidden">
+    <div class="paper-pattern"></div><img class="intro-overlay" src="assets/figma/intro-overlay.png" alt="" aria-hidden="true">
+    <div id="stitchScene" class="stitch-scene" aria-hidden="true"><img id="stitchArt" src="assets/figma/embroidery.png" alt=""><img id="stitchExclude" src="assets/figma/stitch-套针-exclude.png" alt=""></div><div id="stitchPins" class="stitch-pins"></div>
+    <div id="stitchNotes" class="stitch-notes" aria-live="polite"></div>
+    <div class="intro-copy"><span class="corner" aria-hidden="true"></span><h1 id="introTitle"></h1><p id="introText"></p></div>
+    <button id="more" aria-label="点击界面了解更多"><img src="assets/figma/点击界面了解更多.png" alt="点击界面了解更多"></button>
+    <div id="stitchSwitch" class="stitch-switch"></div>
+    <button class="close-btn" data-home><img src="assets/figma/close-button.png" alt="关闭"></button>
+  </section>
+
+  <section id="detail" class="view detail is-hidden">
+    <div id="detailBackdrop" class="detail-backdrop" aria-hidden="true"></div>
+    <header><div id="detailHero" class="detail-hero"></div></header>
+    <article><h1 id="detailTitle"></h1><p id="detailLead"></p><div id="detailSections"></div></article>
+    <button class="back-btn dark" id="backIntro"><img src="assets/figma/back-home.png" alt="返回主页"></button><button class="close-btn dark" data-home><img src="assets/figma/close-button.png" alt="关闭"></button>
+  </section>
+
+  <section id="information" class="view information is-hidden">
+    <div class="info-lines"></div><img src="assets/figma/embroidery.png" alt="《家园》刺绣全卷">
+    <div class="info-grid"><div class="info-card"><h1>作品名称：《家园》</h1><p>工艺门类：中阳刺绣</p><p>刺绣长卷《家园》以中阳县（山西吕梁）南川河为主线，以烈士楼为中心，串联起大槐树下的民俗记忆、龙山与凤凰山的城市新貌、柏洼山与上顶山的田园牧歌。</p></div><div class="info-facts"><p>民俗元素：剪窗花 · 烤枣山 · 转九曲 · 扭秧歌</p><p>核心地标：南川河、柏洼山、上顶山、龙山公园、庞家会村、烈士楼、凤凰阁</p><p>主题立意：“绿水青山就是金山银山”</p></div></div>
+    <button class="back-btn" data-home><img src="assets/figma/back-home.png" alt="返回主页"></button>
+  </section>
+</main>
+<script src="content-data.js"></script><script src="script.js?v=20260912-12"></script>
+</body></html>
