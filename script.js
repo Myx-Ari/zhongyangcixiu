@@ -281,7 +281,7 @@ $$('[data-home],#backIntro,#more,#workInfo').forEach(button=>button.addEventList
   if (!home || !tabs || document.querySelector('#heshunEntries')) return;
   const wrap = document.createElement('div');
   wrap.id = 'heshunEntries';
-  wrap.innerHTML = '<a href="heshun/zhongyang.html" title="了解中阳刺绣"><img src="assets/heshun/中阳刺绣图标.png" alt=""><span>中阳刺绣</span></a><a href="heshun/index.html" title="进入和顺牵绣"><img src="assets/heshun/和顺牵绣图标.png" alt=""><span>和顺牵绣</span></a>';
+  wrap.innerHTML = '<a href="heshun-site/heshun/zhongyang.html" title="了解中阳刺绣"><img src="heshun-site/assets/heshun/中阳刺绣图标.png" alt=""><span>中阳刺绣</span></a><a href="heshun-site/heshun/index.html" title="进入和顺牵绣"><img src="heshun-site/assets/heshun/和顺牵绣图标.png" alt=""><span>和顺牵绣</span></a>';
   home.appendChild(wrap);
   const sync = () => { wrap.hidden = tabs.dataset.active !== '绣工'; };
   new MutationObserver(sync).observe(tabs, { attributes: true, attributeFilter: ['data-active'] });

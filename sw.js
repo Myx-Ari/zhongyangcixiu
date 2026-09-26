@@ -1,4 +1,4 @@
-const VERSION = 'zhongyang-offline-v20260926-1';
+const VERSION = 'zhongyang-offline-v20260926-2';
 const CORE = [
   './', './index.html', './style.css', './content-data.js', './script.js', './heshun-entry.js',
   './heshun-site/index.html', './heshun-site/style.css', './heshun-site/content-data.js', './heshun-site/script.js',
@@ -10,20 +10,22 @@ self.addEventListener('install', event => {
   event.waitUntil(caches.open(VERSION).then(async cache => {
     await cache.addAll(CORE);
     const assets = await fetch('./offline-assets.json').then(response => response.json());
-    await Promise.all(assets.map(url => cache.add(url).catch(() => undefined)));
+    for (let i = 0; i < assets.length; i += 4) {
+      await Promise.all(assets.slice(i, i + 4).map(url => cache.add(url)));
+    }
   }).then(() => self.skipWaiting()));
 });
 
 self.addEventListener('activate', event => {
   event.waitUntil(caches.keys().then(keys => Promise.all(
-    keys.filter(key => key !== VERSION).map(key => caches.delete(key))
+    keys.filter(key => key.startsWith("zhongyang-offline-") && key !== VERSION).map(key => caches.delete(key))
   )).then(() => self.clients.claim()));
 });
 
 self.addEventListener('fetch', event => {
   const request = event.request;
   if (request.method !== 'GET' || !request.url.startsWith(self.location.origin)) return;
-  event.respondWith(caches.match(request).then(cached => {
+  event.respondWith(caches.open(VERSION).then(cache => cache.match(request, {ignoreSearch:true})).then(cached => {
     if (cached) return cached;
     return fetch(request).then(response => {
       if (response.ok && response.type === 'basic') {
