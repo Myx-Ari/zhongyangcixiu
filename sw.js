@@ -1,4 +1,4 @@
-const VERSION = 'zhongyang-offline-v20260926-2';
+const VERSION = 'zhongyang-offline-v20260926-3';
 const CORE = [
   './', './index.html', './style.css', './content-data.js', './script.js', './heshun-entry.js',
   './heshun-site/index.html', './heshun-site/style.css', './heshun-site/content-data.js', './heshun-site/script.js',

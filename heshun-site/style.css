@@ -13,7 +13,8 @@
 .pin:after{content:"";position:absolute;inset:13px;border-radius:50%;background:#fff}
 @keyframes pinPulse{0%,100%{box-shadow:0 0 0 0 #fbfbed99}50%{box-shadow:0 0 0 9px #fbfbed33}}
 .work-info{transition:transform .35s,filter .35s;z-index:3}.work-info:hover{transform:scale(1.06);filter:drop-shadow(0 5px 9px #4e2e1e66)}
-.information{animation:infoIn .5s ease both}@keyframes infoIn{from{clip-path:inset(0 0 0 100%);opacity:.5}to{clip-path:inset(0);opacity:1}}
+.information{z-index:30;animation:infoIn .18s ease-out both}@keyframes infoIn{from{opacity:0}to{opacity:1}}
+@media(prefers-reduced-motion:reduce){.information{animation:none}}
 
 /* responsive interaction refinements */
 .pin{background:url("assets/figma/pin-center.png") center/contain no-repeat;border-radius:50%;opacity:1;animation:pinPulse 2.1s ease-in-out infinite}
