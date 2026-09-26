@@ -273,3 +273,18 @@ startIntroTransition = async function(name){ playSound('transition'); return aud
 const audioOriginalDetail = openDetail;
 openDetail = function(){ setAmbient(current==='山地农耕'?'rural':null); return audioOriginalDetail(); };
 $$('[data-home],#backIntro,#more,#workInfo').forEach(button=>button.addEventListener('click',()=>playSound('button')));
+
+// Heshun entry links belong to the 绣工 tab and are mounted by the main app.
+(function mountHeshunEntries(){
+  const home = document.querySelector('#home');
+  const tabs = document.querySelector('#tabs');
+  if (!home || !tabs || document.querySelector('#heshunEntries')) return;
+  const wrap = document.createElement('div');
+  wrap.id = 'heshunEntries';
+  wrap.innerHTML = '<a href="heshun/zhongyang.html" title="了解中阳刺绣"><img src="assets/heshun/中阳刺绣图标.png" alt=""><span>中阳刺绣</span></a><a href="heshun/index.html" title="进入和顺牵绣"><img src="assets/heshun/和顺牵绣图标.png" alt=""><span>和顺牵绣</span></a>';
+  home.appendChild(wrap);
+  const sync = () => { wrap.hidden = tabs.dataset.active !== '绣工'; };
+  new MutationObserver(sync).observe(tabs, { attributes: true, attributeFilter: ['data-active'] });
+  tabs.addEventListener('click', () => requestAnimationFrame(sync));
+  sync();
+})();

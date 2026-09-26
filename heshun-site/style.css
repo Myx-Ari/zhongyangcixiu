@@ -1,0 +1,227 @@
+:root{--ivory:#fbfbed;--brown:#804e28;--ink:#5d442d;--shadow:4px 4px 10px rgba(129,86,0,.2)}
+*{box-sizing:border-box}html,body,#app{width:100%;height:100%;margin:0;overflow:hidden;overscroll-behavior:none}body{font-family:"Alibaba PuHuiTi","Microsoft YaHei",sans-serif;background:var(--ivory);color:var(--ink)}button{font:inherit}.view{position:absolute;inset:0;overflow:hidden}.is-hidden{display:none!important}
+#home{background:#d5c39e}.stage{position:absolute;left:0;top:0;height:100%;width:max-content;transform-origin:0 0;cursor:grab;touch-action:none;user-select:none}.stage.dragging{cursor:grabbing}.scroll-art{display:block;height:100%;width:auto;max-width:none;pointer-events:none}.pins{position:absolute;inset:0}.pin{position:absolute;width:45px;height:45px;padding:0;border:0;background:url("assets/figma/pin.svg") center/contain no-repeat;transform:translate(-50%,-50%);cursor:pointer;filter:drop-shadow(0 2px 4px #47301f66);transition:transform .2s}.pin:hover,.pin:focus-visible{transform:translate(-50%,-50%) scale(1.18)}
+.home-overlay{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;opacity:.3;mix-blend-mode:normal;pointer-events:none;z-index:3}.stage{z-index:2}.bottom-bar,.controls,.work-info,.gesture-tip{z-index:10}
+.bottom-bar{position:absolute;left:4.5%;right:7%;bottom:5.4%;display:flex;align-items:center;gap:5.5%;pointer-events:none}.tabs,.entries{display:flex;align-items:center;pointer-events:auto}.tabs{position:relative;padding:10px;background:var(--ivory);border-radius:200px;box-shadow:var(--shadow),inset 0 4px 4px #fff;flex:none;isolation:isolate}.tabs:before{content:"";position:absolute;left:10px;top:10px;width:115px;height:55px;border-radius:200px;background:var(--brown);box-shadow:inset 0 2px 4px #ffffff33;z-index:-1;transition:transform .52s cubic-bezier(.22,1,.36,1)}.tabs[data-active="风物"]:before{transform:translateX(115px)}.tabs[data-active="绣工"]:before{transform:translateX(230px)}.tabs button{width:115px;height:55px;border:0;border-radius:200px;background:transparent;font-size:25px;cursor:pointer;color:#111;transition:color .3s ease,transform .35s cubic-bezier(.22,1,.36,1)}.tabs button.active{background:transparent;color:#fff;box-shadow:none}.tabs button:active{transform:scale(.94)}.entries{gap:28px;min-width:0;overflow-x:auto;padding:7px}.image-entry{width:112px;height:112px;flex:0 0 112px;border:0;border-radius:50%;background:var(--ivory);box-shadow:var(--shadow),inset 0 4px 4px #fff;padding:15px;cursor:pointer;transition:transform .38s cubic-bezier(.22,1,.36,1),box-shadow .38s ease,background-color .38s ease}.image-entry img{width:100%;height:100%;object-fit:contain;transition:transform .38s cubic-bezier(.22,1,.36,1)}.image-entry:hover{transform:translateY(-5px)}.image-entry:hover img{transform:scale(1.06)}.stitch-entry{flex:0 0 auto;border:3px solid var(--brown);border-radius:200px;background:var(--ivory);padding:9px 18px;font-size:19px;cursor:pointer;transition:color .3s ease,background-color .3s ease,transform .3s ease}.stitch-entry:active{transform:scale(.94)}.entries-leaving>*{animation:entryFoldOut .19s ease both}.entries-entering>*{animation:entryFanIn .5s cubic-bezier(.16,1,.3,1) both;animation-delay:calc(var(--entry-index,0)*45ms)}@keyframes entryFoldOut{to{opacity:0;transform:translateX(-28px) scale(.78)}}@keyframes entryFanIn{from{opacity:0;transform:translateX(calc(-34px - var(--entry-index,0)*8px)) scale(.76)}to{opacity:1;transform:none}}.work-info{position:absolute;right:18px;top:50px;width:154px;height:175px;border:0;background:transparent;padding:0;cursor:pointer}.work-info img{width:100%;height:100%;object-fit:contain}.controls{position:absolute;left:22px;top:22px;display:flex;align-items:center;background:var(--ivory);box-shadow:var(--shadow);border-radius:4px;overflow:hidden}.controls button{width:42px;height:42px;border:0;background:transparent;font-size:24px;color:var(--brown);cursor:pointer}.controls span{width:50px;text-align:center;font-size:13px}.gesture-tip{position:absolute;top:68px;left:22px;margin:0;padding:6px 9px;background:#2d1c1299;color:#fff;font-size:12px;border-radius:3px;transition:opacity 1s}
+.paper-pattern{position:absolute;inset:0;background:#a86d3e url("assets/figma/paper-cut.png") center/cover;filter:sepia(.2);opacity:.95}.paper-pattern:after{content:"";position:absolute;inset:0;background:#9b5c2bcc;mix-blend-mode:multiply}.focus-image{position:absolute;left:11%;top:42%;width:26vw;height:34vh;border-radius:50%;background-image:url("assets/figma/embroidery-scan.webp");background-repeat:no-repeat;background-size:auto 100vh;background-position:var(--focus-x,10%) center;box-shadow:0 4px 12px #4e2d1f88}.intro-copy{position:absolute;left:39%;top:33%;width:43%;color:#fff}.intro-copy .corner{position:absolute;left:-58px;top:14px;width:100px;height:100px;border-left:4px solid #fff;border-bottom:4px solid #fff}.intro-copy h1{font-size:clamp(38px,4vw,72px);margin:0 0 45px;font-weight:700;letter-spacing:0}.intro-copy p{font-size:clamp(17px,1.45vw,28px);line-height:1.9;font-weight:600;margin:0;max-width:720px}.intro-copy button{display:block;margin:13vh auto 0;border:0;border-bottom:2px solid #fff;background:transparent;color:#fff;font-size:24px;padding:10px 36px;cursor:pointer}.close-btn{position:absolute;right:6%;bottom:14%;width:98px;height:98px;border:3px solid #fff;border-radius:50%;background:transparent;color:#fff;font-size:62px;font-weight:200;line-height:1;cursor:pointer}.back-btn{position:absolute;left:3%;bottom:6%;border:0;border-left:3px solid currentColor;border-bottom:3px solid currentColor;background:transparent;color:#fff;padding:12px 28px;font-size:28px;cursor:pointer}.stitch-switch{position:absolute;left:27%;right:9%;bottom:7%;display:flex;gap:13px;overflow:auto;scrollbar-width:none;-ms-overflow-style:none}.stitch-switch::-webkit-scrollbar{display:none}.stitch-switch button{flex:none;border:3px solid var(--brown);background:var(--ivory);border-radius:200px;padding:8px 18px;font-size:19px;cursor:pointer}.stitch-switch button.active{color:#fff;background:var(--brown)}
+.detail{overflow-y:auto;background:var(--ivory)}.detail header{height:42vh;min-height:330px}.detail-hero{height:100%;background:url("assets/figma/embroidery-scan.webp") center/cover}.detail article{width:min(640px,86%);margin:0 auto;padding:70px 0 160px}.detail h1{text-align:center;font-size:52px;margin:0 0 60px}.detail p{font-size:18px;line-height:2;text-align:justify}.detail h2{width:max-content;max-width:100%;margin:58px auto 26px;padding:12px 30px;border:2px solid var(--brown);box-shadow:inset 0 0 0 5px var(--ivory),inset 0 0 0 7px #b69270;font-size:27px}.dark{position:fixed;color:var(--brown)}
+.information{overflow-y:auto;background:#c6ae80;color:#fff;padding:8.7vh 11vw 16vh}.information>img{position:relative;width:100%;height:34vh;object-fit:cover;border:5px solid #655341}.info-lines{position:absolute;left:0;right:0;top:9%;height:95px;border-top:4px solid var(--ivory);border-bottom:3px solid var(--ivory);transform:skewY(-1deg)}.info-grid{display:grid;grid-template-columns:1fr 1.65fr;gap:60px;margin-top:8vh}.info-card,.info-facts p{background:#9a71473d;padding:30px 40px}.info-card h1{font-size:34px;margin-top:0}.info-card p,.info-facts p{font-size:20px;line-height:1.7}.info-facts{display:flex;flex-direction:column;justify-content:space-between;gap:20px}.info-facts p{margin:0}.information .back-btn{position:fixed}
+@media(max-width:900px){.work-info{width:95px;height:108px;top:18px}.bottom-bar{left:3%;right:3%;bottom:3%;display:block}.tabs{width:max-content;margin-bottom:10px}.tabs:before{width:82px;height:42px}.tabs[data-active="风物"]:before{transform:translateX(82px)}.tabs[data-active="绣工"]:before{transform:translateX(164px)}.tabs button{width:82px;height:42px;font-size:18px}.entries{gap:10px}.image-entry{width:66px;height:66px;flex-basis:66px;padding:9px}.stitch-entry{font-size:15px;padding:7px 13px}.gesture-tip{display:none}.focus-image{left:8%;top:13%;width:44vw;height:27vh}.intro-copy{left:9%;top:43%;width:82%}.intro-copy .corner{display:none}.intro-copy h1{margin-bottom:18px}.intro-copy button{margin-top:3vh}.close-btn{width:60px;height:60px;font-size:38px;right:5%;bottom:18%}.back-btn{font-size:20px}.stitch-switch{left:5%;right:5%;bottom:7%}.detail header{height:28vh;min-height:200px}.detail article{padding-top:45px}.detail h1{font-size:38px;margin-bottom:30px}.information{padding:7vh 6vw 18vh}.information>img{height:24vh}.info-grid{grid-template-columns:1fr;gap:20px}.info-card h1{font-size:26px}.info-card p,.info-facts p{font-size:16px}}
+
+/* interaction refinements */
+.pin{background:#fbfbed;animation:pinPulse 2.1s ease-in-out infinite}
+.pin:after{content:"";position:absolute;inset:13px;border-radius:50%;background:#fff}
+@keyframes pinPulse{0%,100%{box-shadow:0 0 0 0 #fbfbed99}50%{box-shadow:0 0 0 9px #fbfbed33}}
+.work-info{transition:transform .35s,filter .35s;z-index:3}.work-info:hover{transform:scale(1.06);filter:drop-shadow(0 5px 9px #4e2e1e66)}
+.information{animation:infoIn .5s ease both}@keyframes infoIn{from{clip-path:inset(0 0 0 100%);opacity:.5}to{clip-path:inset(0);opacity:1}}
+
+/* responsive interaction refinements */
+.pin{background:url("assets/figma/pin-center.png") center/contain no-repeat;border-radius:50%;opacity:1;animation:pinPulse 2.1s ease-in-out infinite}
+.pin:after{display:none}
+@keyframes pinPulse{0%,100%{opacity:.82;filter:drop-shadow(0 2px 4px #47301f66)}50%{opacity:1;filter:drop-shadow(0 0 10px #fff8)}}
+.bottom-bar{left:clamp(12px,4vw,78px);right:clamp(12px,4vw,78px);gap:clamp(10px,2vw,42px);height:129px}
+.entries{flex:1 1 auto;min-width:0;overflow-x:auto;overflow-y:hidden;justify-content:flex-start;gap:clamp(5px,1.2vw,28px);flex-wrap:nowrap;scrollbar-width:none;-ms-overflow-style:none}.entries::-webkit-scrollbar{display:none}
+.image-entry{width:clamp(56px,6vw,112px);height:clamp(56px,6vw,112px);flex:0 1 clamp(56px,6vw,112px);padding:clamp(8px,1vw,15px)}
+.stitch-entry{flex:0 0 auto;min-width:72px;white-space:nowrap;padding:clamp(7px,0.7vw,10px) clamp(9px,1vw,18px);font-size:clamp(13px,1.15vw,19px)}
+.stitch-entry.active{background:var(--brown);color:#fff}
+.work-info{background:transparent!important;padding:0;mix-blend-mode:normal}
+.work-info img{display:block;width:100%;height:100%;object-fit:contain}
+.information{overflow:hidden;padding:4vh 11vw 8vh}
+.information>img{height:34vh}
+.info-grid{gap:3vw;margin-top:3vh}
+.info-card,.info-facts p{padding:18px 24px}
+.info-card h1{font-size:clamp(24px,2.2vw,34px);margin-bottom:18px}
+.info-card p,.info-facts p{font-size:clamp(14px,1.25vw,20px);line-height:1.55}
+.detail{background:var(--ivory)}
+.detail-backdrop{display:none}
+.detail header,.detail article{position:relative;z-index:1}
+.detail header{height:auto;min-height:0;aspect-ratio:1920/454;background:#fbfbed}
+.detail header.is-missing{display:none}
+.detail-hero{width:100%;height:100%;background-image:none;background-repeat:no-repeat;background-size:cover;background-position:center}
+
+@media(max-width:900px){
+  .bottom-bar{left:3%;right:3%;gap:8px}
+  .entries{gap:6px}
+  .stitch-entry{flex:1 1 86px;font-size:13px;padding:6px 8px}
+  .information{padding:4vh 6vw 10vh}
+  .information>img{height:27vh}
+  .info-grid{margin-top:2vh;gap:12px}
+  .info-card,.info-facts p{padding:13px 16px}
+  .info-card p,.info-facts p{font-size:14px;line-height:1.42}
+  .detail-backdrop{opacity:.12}
+}
+
+/* 最终普通介绍页覆盖：底部装饰独立且紧凑 */
+body:not(.stitch-mode) #intro #more{position:absolute;left:50%;bottom:8%;margin:0;padding:0;border:0;background:transparent;line-height:0;transform:translateX(-50%);z-index:24}
+body:not(.stitch-mode) #intro #more img{display:block;width:min(360px,28vw);height:auto}
+body:not(.stitch-mode) #intro .intro-copy{left:8%;top:50%;width:min(42%,650px);max-width:650px;text-align:left;padding:20px 26px 24px;border-radius:12px}
+body:not(.stitch-mode) #intro .intro-copy .corner{display:none}
+body:not(.stitch-mode) #intro .intro-copy p{text-align:left;font-size:clamp(15px,1.05vw,20px);line-height:1.62}
+body:not(.stitch-mode) #intro.focus-low .intro-copy{top:20%}
+body:not(.stitch-mode) #intro .close-btn{width:72px;height:72px;right:6%;bottom:8%}
+@media(max-width:900px){body:not(.stitch-mode) #intro #more{bottom:8%}body:not(.stitch-mode) #intro #more img{width:min(360px,74vw)}body:not(.stitch-mode) #intro .intro-copy{left:8%;top:42%;width:84%;padding:14px 16px 18px;border-radius:10px}body:not(.stitch-mode) #intro .intro-copy p{font-size:16px;line-height:1.6}body:not(.stitch-mode) #intro.focus-low .intro-copy{top:33%}body:not(.stitch-mode) #intro .close-btn{width:56px;height:56px;right:7%;bottom:7%}}
+
+/* 介绍页与聚焦过渡 */
+.paper-cut{position:absolute;left:0;top:0;height:100%;width:max-content;transform-origin:0 0;pointer-events:none;opacity:0;z-index:5;transition:opacity .2s;mask-image:radial-gradient(ellipse var(--hole-rx,75vw) var(--hole-ry,70vh) at var(--hole-x,50%) var(--hole-y,50%),transparent 0 98%,#000 100%);-webkit-mask-image:radial-gradient(ellipse var(--hole-rx,75vw) var(--hole-ry,70vh) at var(--hole-x,50%) var(--hole-y,50%),transparent 0 98%,#000 100%)}
+.paper-cut.active{opacity:1}.paper-cut img{display:block;height:100%;width:auto;max-width:none;opacity:1;mix-blend-mode:normal}.pins{z-index:3}.pin:before{content:"";position:absolute;inset:-28px;border-radius:50%}
+.intro{background:#a8734a}#intro .paper-pattern{display:none}
+.intro-overlay{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;opacity:.42;mix-blend-mode:normal;pointer-events:none;z-index:21}
+.stitch-scene{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:21;display:none}.stitch-scene img{position:absolute;left:0;top:0;height:100%;width:auto;max-width:none;display:block}.stitch-scene #stitchExclude{z-index:1}
+.intro-copy p{white-space:pre-line}.intro-copy button{border:0;background:transparent;padding:0}.intro-copy button img{display:block;width:min(290px,42vw);height:auto}
+.close-btn{border:0;background:transparent;padding:0}.close-btn img{width:100%;height:100%;display:block}.back-btn{border:0;background:transparent;padding:0}.back-btn img{display:block;width:98px;height:auto}
+.detail h3{font-size:25px;text-align:center;color:var(--brown);margin:38px 0 14px}.detail .section-image{display:block;width:100%;height:auto;max-height:420px;object-fit:cover;margin:22px 0;background:transparent}
+.detail article{padding-bottom:220px}
+#intro{z-index:20;background:transparent}.intro-copy,.focus-image,.stitch-switch,.back-btn,.close-btn{z-index:22}.image-entry.active{background:#e6bd58;box-shadow:0 0 0 4px #f7e4a1,var(--shadow)}
+.stitch-mode .intro-overlay,.stitch-mode .paper-pattern{display:none}.stitch-mode .stitch-scene{display:block;pointer-events:auto;cursor:grab;touch-action:none}.stitch-mode .stitch-scene.dragging{cursor:grabbing}.stitch-mode .intro-copy{z-index:23}.stitch-mode .intro-copy #more{display:none}.stitch-mode .stitch-switch{left:33%;z-index:24}.stitch-mode .stitch-scene #stitchExclude{width:auto;height:100%}
+.stitch-mode #intro #more{display:none}
+.stitch-pins{position:absolute;inset:0;z-index:25;pointer-events:none;overflow:hidden}.stitch-pin{position:absolute;width:42px;height:42px;margin:-21px 0 0 -21px;border:3px solid #fff;border-radius:50%;background:#804e28cc;box-shadow:0 0 0 5px #fff5,0 4px 10px #3b241c66;pointer-events:auto;cursor:pointer;transition:transform .25s,background-color .25s}.stitch-pin:after{content:"";position:absolute;inset:12px;border-radius:50%;background:#fff}.stitch-pin.active{background:#e6bd58;transform:scale(1.12)}
+.detail .close-btn{display:none}
+.stitch-mode #intro .close-btn{width:72px;height:72px;right:6%;bottom:8%}
+@media(max-width:900px){.stitch-mode #intro .close-btn{width:56px;height:56px;right:7%;bottom:7%}}
+.stitch-notes{position:absolute;inset:0;display:none;z-index:23;pointer-events:none;overflow:hidden}.stitch-notes-mode .stitch-notes{display:block}.stitch-notes-mode .intro-copy{display:none}.stitch-note{position:absolute;width:min(21vw,340px);color:#fff;text-shadow:0 1px 2px #4f2e1d;font-weight:600}.stitch-note:before{content:"";position:absolute;left:-18px;top:3px;width:18px;height:28px;border-left:2px solid #fff;border-bottom:2px solid #fff}.stitch-note h3{margin:0 0 8px;font-size:clamp(22px,2.1vw,40px);line-height:1.05}.stitch-note p{margin:0;font-size:clamp(11px,1vw,18px);line-height:1.55;white-space:pre-line}.stitch-note.align-left{transform:translateX(-100%);text-align:right}.stitch-note.align-left:before{left:auto;right:-18px;transform:scaleX(-1)}
+#home .paper-cut{z-index:8}.intro-mode #home .bottom-bar,.intro-mode #home .controls,.intro-mode #home .work-info,.intro-mode #home .gesture-tip,.intro-mode #home .pins{visibility:hidden}
+.stitch-note.align-left{transform:none;text-align:left}.stitch-note.align-left:before{left:-18px;right:auto;transform:none}
+.stitch-mode #home .bottom-bar{visibility:visible;z-index:30}.stitch-mode #home .bottom-bar #entries{display:none}.stitch-mode #home .bottom-bar #tabs{pointer-events:auto}
+.stitch-mode #home .controls{visibility:visible;z-index:30}
+#pins .pin{width:90px;height:90px;background-size:45px 45px}
+#pins .pin.cross-group{opacity:.72;transform:translate(-50%,-50%) scale(.82);filter:grayscale(.15) drop-shadow(0 2px 4px #47301f55)}#pins .pin.cross-group:hover,#pins .pin.cross-group:focus-visible{opacity:1;transform:translate(-50%,-50%) scale(.98);filter:none}
+#intro .intro-copy,#intro .focus-image,#intro .stitch-switch,#intro .back-btn,#intro .close-btn{animation:introFloat .8s ease both}#intro .intro-copy{animation-delay:.15s}@keyframes introFloat{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+#intro.focus-right .focus-image{left:auto;right:10%;}#intro.focus-right .intro-copy{left:9%;right:auto}#intro.focus-right .intro-copy .corner{left:auto;right:-58px;border-left:0;border-right:4px solid #fff}
+@media(max-width:900px){.bottom-bar{height:96px}.intro-overlay{opacity:.45}.intro-copy button img{width:min(290px,78vw)}.back-btn img{width:72px}.close-btn{width:60px;height:60px}.detail .section-image{height:160px}}
+@media(max-width:900px){.detail header{height:34vh;min-height:220px;aspect-ratio:auto}.detail-hero{background-size:cover;background-position:center}}
+
+/* 介绍文案根据聚焦点避让，并修正指向箭头 */
+#intro.focus-low .intro-copy{top:12%;width:42%;}#intro.focus-low .focus-image{top:9%;height:27vh}
+/* Figma 箭头资源 */
+.intro-copy .corner{border:0;background:url("assets/figma/arrow.png") center/contain no-repeat}
+.intro-copy .corner:after{display:none}
+#intro.focus-right .intro-copy .corner{border:0;background-image:url("assets/figma/arrow.png");transform:scaleX(-1)}
+.intro-copy .corner:after{display:none!important}
+.intro-copy .corner:after{content:"";position:absolute;left:-4px;bottom:-4px;width:24px;height:24px;border-left:4px solid #fff;border-bottom:4px solid #fff;transform:rotate(45deg);transform-origin:0 100%}
+#intro.focus-right .intro-copy .corner:after{left:auto;right:-4px;transform:rotate(135deg);transform-origin:100% 100%}
+.detail h2{padding:0;border:0;box-shadow:none;font-size:34px;color:var(--brown)}.detail h3{width:max-content;max-width:100%;padding:12px 30px;border:2px solid var(--brown);box-shadow:inset 0 0 0 5px var(--ivory),inset 0 0 0 7px #b69270;font-size:27px;color:var(--brown)}
+@media(max-width:900px){.stitch-mode .stitch-switch{left:3%;right:3%;bottom:15%}}
+
+/* 普通介绍页：固定分区，取消不稳定箭头 */
+body:not(.stitch-mode) #intro .intro-copy .corner{display:none}
+body:not(.stitch-mode) #intro .intro-copy{left:8%;top:50%;width:min(42%,650px);max-width:650px;text-align:left;padding:20px 26px 24px;border-radius:12px;background:#4b2d2080;box-shadow:0 8px 28px #2d1b1455;backdrop-filter:blur(2px)}
+body:not(.stitch-mode) #intro .intro-copy h1{font-size:clamp(30px,3vw,50px);margin:0 0 16px}
+body:not(.stitch-mode) #intro .intro-copy p{max-width:100%;margin:0;font-size:clamp(15px,1.05vw,20px);line-height:1.62;text-align:left}
+body:not(.stitch-mode) #intro #more{position:absolute;left:50%;bottom:8%;transform:translateX(-50%);z-index:24;margin:0;padding:0;border:0;background:transparent;line-height:0;transition:opacity .25s,transform .25s}
+body:not(.stitch-mode) #intro #more img{display:block;width:min(360px,28vw);height:auto}
+body:not(.stitch-mode) #intro #more:hover{opacity:.82;transform:translateX(-50%) translateY(-2px)}
+body:not(.stitch-mode) #intro.focus-right .intro-copy{left:8%;right:auto;top:50%;width:min(42%,650px)}
+body:not(.stitch-mode) #intro.focus-low .intro-copy{top:20%}
+@media(max-width:900px){body:not(.stitch-mode) #intro .intro-copy{left:8%;top:42%;width:84%;padding:14px 16px 18px;border-radius:10px}body:not(.stitch-mode) #intro .intro-copy p{font-size:16px;line-height:1.6}body:not(.stitch-mode) #intro #more{bottom:8%}body:not(.stitch-mode) #intro #more img{width:min(360px,74vw)}body:not(.stitch-mode) #intro.focus-low .intro-copy{top:33%}}
+body:not(.stitch-mode) #intro .close-btn{width:72px;height:72px;right:6%;bottom:8%}
+@media(max-width:900px){body:not(.stitch-mode) #intro .close-btn{width:56px;height:56px;right:7%;bottom:7%}}
+@media(prefers-reduced-motion:reduce){.tabs:before,.tabs button,.image-entry,.image-entry img,.stitch-entry{transition:none}.entries-leaving>*,.entries-entering>*{animation:none}}
+.stitch-switch button{transition:color .32s ease,background-color .32s ease,box-shadow .32s ease}.stitch-switch button:hover{transform:none}.stitch-switch button.active{box-shadow:0 6px 14px #4e2d1f40;transform:none}
+@media(prefers-reduced-motion:reduce){.stitch-switch button{transition:none}}
+
+/* 统一首页与绣工介绍页底栏尺寸、锚点 */
+:root{--bar-left:clamp(12px,4vw,78px);--bar-right:clamp(12px,4vw,78px);--bar-bottom:5.4%;--bar-height:104px;--bar-gap:clamp(10px,2vw,32px);--tab-width:96px;--tab-height:46px;--tab-pad:8px}
+.bottom-bar{left:var(--bar-left);right:var(--bar-right);bottom:var(--bar-bottom);height:var(--bar-height);gap:var(--bar-gap)}
+.tabs{padding:var(--tab-pad)}
+.tabs:before{left:var(--tab-pad);top:var(--tab-pad);width:var(--tab-width);height:var(--tab-height)}
+.tabs[data-active="风物"]:before{transform:translateX(var(--tab-width))}
+.tabs[data-active="绣工"]:before{transform:translateX(calc(var(--tab-width)*2))}
+.tabs button{width:var(--tab-width);height:var(--tab-height);font-size:21px}
+.image-entry{width:clamp(52px,5vw,90px);height:clamp(52px,5vw,90px);flex-basis:clamp(52px,5vw,90px);padding:clamp(8px,.75vw,12px)}
+.stitch-entry{min-width:66px;padding:7px 14px;font-size:16px}
+.stitch-mode #intro .stitch-switch{left:calc(var(--bar-left) + var(--tab-width)*3 + var(--tab-pad)*2 + var(--bar-gap) + 7px);right:var(--bar-right);bottom:calc(var(--bar-bottom) + 30px);animation:none}
+.stitch-switch button{padding:7px 14px;font-size:16px}
+
+@media(max-width:900px){
+  :root{--bar-left:3%;--bar-right:3%;--bar-bottom:3%;--bar-height:88px;--tab-width:72px;--tab-height:38px;--tab-pad:7px}
+  .tabs button{font-size:16px}
+  .image-entry{width:58px;height:58px;flex-basis:58px;padding:8px}
+  .stitch-entry{font-size:12px;padding:5px 8px}
+  .stitch-mode #intro .stitch-switch{left:var(--bar-left);right:var(--bar-right);bottom:var(--bar-bottom);padding-left:7px}
+  .stitch-switch button{padding:6px 10px;font-size:13px}
+}
+
+/* 普通介绍页：文字与聚焦图分区，避免互相遮挡 */
+body:not(.stitch-mode) #intro .focus-image{left:7%;top:36%;width:25vw;height:30vh}
+body:not(.stitch-mode) #intro .intro-copy{left:38%;top:27%;width:min(45%,650px)}
+body:not(.stitch-mode) #intro .intro-copy h1{font-size:clamp(32px,3.2vw,56px);margin-bottom:24px;line-height:1.12}
+body:not(.stitch-mode) #intro .intro-copy p{font-size:clamp(15px,1.15vw,22px);line-height:1.68;max-width:620px}
+body:not(.stitch-mode) #intro .intro-copy button{margin-top:7vh}
+body:not(.stitch-mode) #intro .intro-copy .corner{top:22px;left:-52px;width:78px;height:78px}
+body:not(.stitch-mode) #intro.focus-right .focus-image{left:auto;right:7%}
+body:not(.stitch-mode) #intro.focus-right .intro-copy{left:8%;right:auto;width:min(43%,620px)}
+body:not(.stitch-mode) #intro.focus-right .intro-copy .corner{left:auto;right:-52px}
+
+@media(max-width:900px){
+  body:not(.stitch-mode) #intro .focus-image{left:8%;right:auto;top:10%;width:42vw;height:25vh}
+  body:not(.stitch-mode) #intro .intro-copy{left:8%;top:40%;width:84%;}
+  body:not(.stitch-mode) #intro .intro-copy h1{font-size:clamp(28px,8vw,38px);margin-bottom:14px}
+  body:not(.stitch-mode) #intro .intro-copy p{font-size:16px;line-height:1.62;max-width:none}
+  body:not(.stitch-mode) #intro .intro-copy button{margin-top:3vh}
+  body:not(.stitch-mode) #intro .intro-copy .corner{display:none}
+  body:not(.stitch-mode) #intro.focus-right .focus-image{left:8%;right:auto}
+  body:not(.stitch-mode) #intro.focus-right .intro-copy{left:8%;width:84%;top:40%}
+  body:not(.stitch-mode) #intro.focus-low .focus-image{top:7%;height:23vh}
+  body:not(.stitch-mode) #intro.focus-low .intro-copy{top:34%;width:84%}
+}
+
+/* 最终普通介绍页覆盖：底部装饰独立且紧凑 */
+body:not(.stitch-mode) #intro #more{position:absolute;left:50%;bottom:8%;margin:0;padding:0;border:0;background:transparent;line-height:0;transform:translateX(-50%);z-index:24}
+body:not(.stitch-mode) #intro #more img{display:block;width:min(360px,28vw);height:auto}
+body:not(.stitch-mode) #intro .intro-copy{left:8%;top:50%;width:min(42%,650px);max-width:650px;text-align:left;padding:20px 26px 24px;border-radius:12px}
+body:not(.stitch-mode) #intro .intro-copy .corner{display:none}
+body:not(.stitch-mode) #intro .intro-copy p{text-align:left;font-size:clamp(15px,1.05vw,20px);line-height:1.62}
+body:not(.stitch-mode) #intro.focus-low .intro-copy{top:20%}
+body:not(.stitch-mode) #intro .close-btn{width:72px;height:72px;right:6%;bottom:8%}
+@media(max-width:900px){body:not(.stitch-mode) #intro #more{bottom:8%}body:not(.stitch-mode) #intro #more img{width:min(360px,74vw)}body:not(.stitch-mode) #intro .intro-copy{left:8%;top:42%;width:84%;padding:14px 16px 18px;border-radius:10px}body:not(.stitch-mode) #intro .intro-copy p{font-size:16px;line-height:1.6}body:not(.stitch-mode) #intro.focus-low .intro-copy{top:33%}body:not(.stitch-mode) #intro .close-btn{width:56px;height:56px;right:7%;bottom:7%}}
+/* Figma 绣工点位：保持与原图坐标一致并持续闪烁 */
+.heshun-entry{position:absolute;left:4.5%;bottom:calc(5.4% + 136px);z-index:40;display:flex;align-items:center;gap:9px;padding:9px 17px;background:#fbfbed;color:#704628;border:2px solid #81532f;border-radius:30px;text-decoration:none;font-size:17px;box-shadow:2px 3px 8px #422b2944}.heshun-entry img{width:32px;height:30px;object-fit:contain}.heshun-entry:hover{transform:translateY(-2px)}.heshun-entry[hidden]{display:none}@media(max-width:700px){.heshun-entry{left:3%;bottom:calc(3% + 112px);font-size:14px;padding:6px 10px}.heshun-entry img{width:22px;height:22px}}
+.heshun-entry-secondary{left:calc(4.5% + 190px)}@media(max-width:700px){.heshun-entry-secondary{left:calc(3% + 145px)}}
+#pins .stitch-home-pin{animation:stitchPinPulse 1.8s ease-in-out infinite;animation-delay:var(--pin-delay,0ms)}
+@keyframes stitchPinPulse{0%,100%{filter:drop-shadow(0 2px 4px #47301f66);opacity:.72}50%{filter:drop-shadow(0 0 12px #ffe28c) drop-shadow(0 2px 5px #47301f88);opacity:1;transform:translate(-50%,-50%) scale(1.2)}}
+/* 绣工介绍页使用普通孔洞聚焦，不显示旧的固定画卷场景。 */
+.stitch-mode .stitch-scene{display:none!important;pointer-events:none!important}
+.stitch-mode .intro-overlay,.stitch-mode .paper-pattern{display:none!important}
+.stitch-mode #intro{background:transparent;pointer-events:none}
+.stitch-mode #intro{z-index:80}
+.stitch-mode #intro .intro-copy,.stitch-mode #intro .stitch-switch,.stitch-mode #intro .close-btn{pointer-events:auto}
+.stitch-mode #home .stage{pointer-events:auto}
+.stitch-mode .intro-copy{left:8%;top:50%;width:min(42%,650px);max-width:650px;padding:20px 26px 24px;border-radius:12px;background:#4b2d2080;box-shadow:0 8px 28px #2d1b1455;z-index:22}
+.stitch-mode .intro-copy .corner{display:none}
+.stitch-mode .stitch-switch{left:33%;right:var(--bar-right);bottom:var(--bar-bottom);z-index:24}
+.stitch-mode #intro #more{display:none!important}
+.stitch-mode .intro-copy{display:none}
+.stitch-notes-mode .stitch-notes{display:block!important;z-index:23;opacity:0;transition:opacity .52s ease-out}
+.stitch-notes-mode .stitch-notes.is-visible{opacity:1}
+.stitch-note{width:min(24vw,330px);transform:translate(18px,-50%);pointer-events:none;background:#4b2d20b8;padding:10px 14px;border-radius:6px;text-shadow:none;box-shadow:0 5px 16px #2d1b1455}
+.stitch-note{opacity:0;transform:translate(18px,calc(-50% + 14px));transition:opacity .58s cubic-bezier(.22,1,.36,1),transform .72s cubic-bezier(.16,1.2,.3,1);transition-delay:var(--note-delay,0ms)}
+.stitch-notes.is-visible .stitch-note{opacity:1;transform:translate(18px,-50%)}
+.stitch-note.align-left{transform:translate(calc(-100% - 18px),calc(-50% + 14px))}
+.stitch-notes.is-visible .stitch-note.align-left{transform:translate(calc(-100% - 18px),-50%)}
+.stitch-note h3{margin:0 0 5px;font-size:clamp(18px,1.65vw,30px);line-height:1.1;color:#ffe8a8}
+.stitch-note p{margin:0;font-size:clamp(11px,.95vw,16px);line-height:1.45;color:#fff;white-space:pre-line}
+.stitch-note.align-left{transform:translate(calc(-100% - 18px),-50%);text-align:right}
+.stitch-note.align-left{transform:translate(calc(-100% - 18px),calc(-50% + 14px))}
+.stitch-notes.is-visible .stitch-note.align-left{transform:translate(calc(-100% - 18px),-50%)}
+.stitch-note:before,.stitch-note:after{display:none!important}
+.stitch-switch button{width:78px;min-width:78px;flex:0 0 78px;text-align:center;white-space:nowrap}
+body:not(.stitch-mode) #intro .stitch-switch{display:none!important}
+.stitch-mode #intro .stitch-switch{z-index:60;pointer-events:auto}
+.stitch-mode #intro .stitch-switch button.active{background:var(--brown);color:#fffdf0;border-color:var(--brown);box-shadow:0 5px 12px #4e2d1f55}
+.stitch-mode #intro .close-btn{position:absolute;z-index:70;pointer-events:auto}
+.stitch-mode #home .bottom-bar,.stitch-mode #home #tabs{z-index:65;pointer-events:auto}
+/* 绣工点位使用空心圆环，避免遮挡刺绣内容。 */
+.stitch-pin{background:transparent!important;border:3px solid #fff;box-shadow:0 0 0 3px #ffffff33,0 3px 10px #3b241c66}
+.stitch-pin:after{background:transparent!important;border:0}
+#pins .stitch-home-pin{width:45px;height:45px;background:transparent!important;border:3px solid #fff;border-radius:50%;box-shadow:0 0 0 3px #ffffff33,0 3px 10px #3b241c66}
+#pins .stitch-home-pin:after{background:transparent!important}
+.stitch-hole-canvas{pointer-events:none}
+@media(max-width:900px){.stitch-mode .intro-copy{left:8%;top:42%;width:84%;padding:14px 16px 18px}.stitch-mode .stitch-switch{left:var(--bar-left);right:var(--bar-right);bottom:var(--bar-bottom)}}
+@media(max-width:900px){.stitch-switch button{width:64px;min-width:64px;flex-basis:64px}}
+.heshun-entry{display:none}
+#heshunEntries{position:absolute;left:4.5%;bottom:calc(5.4% + 136px);z-index:40;display:flex;gap:14px;align-items:center}
+#heshunEntries[hidden]{display:none}
+#heshunEntries a{display:flex;align-items:center;gap:10px;padding:10px 20px;border-radius:999px;background:#fffdf2;color:#6c4b2f;text-decoration:none;font-weight:700;box-shadow:0 8px 18px #4b301933;transition:transform .25s ease,box-shadow .25s ease}
+#heshunEntries a:hover{transform:translateY(-3px) scale(1.03);box-shadow:0 12px 24px #4b301955}
+#heshunEntries img{width:38px;height:38px;object-fit:contain}
+@media(max-width:900px){#heshunEntries{left:3%;bottom:calc(5.4% + 118px);gap:8px}#heshunEntries a{padding:8px 12px;font-size:14px}#heshunEntries img{width:30px;height:30px}}

@@ -1,0 +1,16 @@
+{
+  "name": "家园 · 中阳刺绣数字长卷",
+  "short_name": "中阳刺绣",
+  "lang": "zh-CN",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "fullscreen",
+  "orientation": "landscape",
+  "background_color": "#d5c39e",
+  "theme_color": "#6d422c",
+  "icons": [{
+    "src": "assets/heshun/中阳刺绣图标.png",
+    "sizes": "192x192",
+    "type": "image/png"
+  }]
+}
