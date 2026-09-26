@@ -1,4 +1,4 @@
-const asset = name => `../assets/heshun/${name}.png`;
+const asset = name => `../../assets/heshun/${name}.png`;
 const works = [
   {name:'作品一',image:'作品1',points:[
     {name:'缠绕滚针绣',x:66,y:29,image:'缠绕滚针绣',text:'尖角采用缠绕滚针绣。针针逼紧、不露针眼，针眼藏于线下呈“拧麻花”状，适合表现弯曲缠绕的线条。',reference:'和顺牵绣深入介绍-1'},

@@ -3,14 +3,14 @@ const heshunButton = document.createElement('a');
 heshunButton.className = 'heshun-entry';
 heshunButton.href = 'heshun/zhongyang.html';
 heshunButton.title = '了解中阳刺绣';
-heshunButton.innerHTML = '<img src="assets/heshun/中阳刺绣图标.png" alt=""><span>中阳刺绣</span>';
+heshunButton.innerHTML = '<img src="../assets/heshun/中阳刺绣图标.png" alt=""><span>中阳刺绣</span>';
 document.querySelector('#home').appendChild(heshunButton);
 const originalHeshunButton = heshunButton;
 const heshunButton2 = document.createElement('a');
 heshunButton2.className = 'heshun-entry heshun-entry-secondary';
 heshunButton2.href = 'heshun/index.html';
 heshunButton2.title = '进入和顺牵绣';
-heshunButton2.innerHTML = '<img src="assets/heshun/和顺牵绣图标.png" alt=""><span>和顺牵绣</span>';
+heshunButton2.innerHTML = '<img src="../assets/heshun/和顺牵绣图标.png" alt=""><span>和顺牵绣</span>';
 document.querySelector('#home').appendChild(heshunButton2);
 
 function syncHeshunEntry() {

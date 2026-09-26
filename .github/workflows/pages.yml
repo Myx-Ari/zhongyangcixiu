@@ -31,6 +31,7 @@ jobs:
           mkdir -p web-dist
           cp index.html style.css script.js content-data.js heshun-entry.js manifest.webmanifest offline-assets.json sw.js web-dist/
           cp -R assets heshun-site web-dist/
+          rm -rf web-dist/heshun-site/assets
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

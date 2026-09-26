@@ -224,3 +224,20 @@ body:not(.stitch-mode) #intro .stitch-switch{display:none!important}
 #heshunEntries a:hover{transform:translateY(-3px) scale(1.03);box-shadow:0 12px 24px #4b301955}
 #heshunEntries img{width:38px;height:38px;object-fit:contain}
 @media(max-width:900px){#heshunEntries{left:3%;bottom:calc(5.4% + 118px);gap:8px}#heshunEntries a{padding:8px 12px;font-size:14px}#heshunEntries img{width:30px;height:30px}}
+
+body.info-open #heshunEntries{visibility:hidden;pointer-events:none}
+#heritageOverlay{position:fixed;inset:0;z-index:100;background:#c6ad7d}
+#heritageOverlay[hidden]{display:none}
+#heritageOverlay iframe{display:block;width:100%;height:100%;border:0;background:#c6ad7d}
+#information{display:block!important;visibility:visible;opacity:1;pointer-events:auto;animation:none;transition:opacity .22s ease-out,visibility 0s;will-change:opacity}
+#information.is-hidden{display:block!important;visibility:hidden;opacity:0;pointer-events:none;transition:opacity .16s ease-out,visibility 0s linear .16s}
+@media(prefers-reduced-motion:reduce){#information,#information.is-hidden{transition:none}}
+#resourceLoader{position:fixed;inset:0;z-index:1000;display:grid;place-content:center;justify-items:center;gap:20px;background:#d5c39e;color:#664829;transition:opacity .28s ease,visibility .28s}
+#resourceLoader[hidden]{display:none}
+#resourceLoader.is-ready{opacity:0;visibility:hidden}
+.loader-mark{font-size:48px;font-weight:700}
+.loader-track{width:min(360px,62vw);height:5px;background:#fff8;border-radius:3px;overflow:hidden}
+.loader-track span{display:block;width:42%;height:100%;background:#75462e;border-radius:3px;animation:loaderMove 1.15s ease-in-out infinite}
+@keyframes loaderMove{0%{transform:translateX(-110%)}50%{transform:translateX(85%)}100%{transform:translateX(240%)}}
+#resourceLoader p{margin:0;font-size:16px}.loader-mark,#resourceLoader p{letter-spacing:0}
+@media(prefers-reduced-motion:reduce){.loader-track span{animation:loaderFade 1.2s ease-in-out infinite alternate}@keyframes loaderFade{from{opacity:.35}to{opacity:1}}}
