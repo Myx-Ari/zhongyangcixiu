@@ -1,0 +1,30 @@
+{
+  "name": "zhongyang-embroidery",
+  "version": "1.0.0",
+  "private": true,
+  "description": "家园 · 中阳刺绣数字长卷离线版",
+  "author": "Myx-Ari",
+  "license": "UNLICENSED",
+  "main": "desktop/main.cjs",
+  "scripts": {
+    "desktop": "electron .",
+    "build:exe": "electron-builder --win portable --x64 --publish never"
+  },
+  "devDependencies": {
+    "electron": "44.4.5",
+    "electron-builder": "26.15.3"
+  },
+  "build": {
+    "appId": "com.myxari.zhongyangembroidery",
+    "productName": "中阳刺绣·家园",
+    "asar": true,
+    "directories": { "output": "dist" },
+    "files": ["desktop/**/*.cjs", "index.html", "script.js", "style.css", "content-data.js", "assets/**/*", "package.json"],
+    "win": {
+      "target": [{ "target": "portable", "arch": ["x64"] }],
+      "artifactName": "Zhongyang-Embroidery-${version}-Windows-x64.exe",
+      "signAndEditExecutable": false
+    },
+    "portable": { "requestExecutionLevel": "user" }
+  }
+}
