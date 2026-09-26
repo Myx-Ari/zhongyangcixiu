@@ -1,4 +1,8 @@
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const sounds={button:$('#audioButton'),transition:$('#audioTransition'),switch:$('#audioSwitch'),fire:$('#audioFire'),water:$('#audioWater'),rural:$('#audioRural')};
+let audioUnlocked=false;
+function playSound(name){const sound=sounds[name];if(!sound)return;if(!audioUnlocked){audioUnlocked=true;Object.values(sounds).forEach(x=>{if(x)x.muted=true;});Object.values(sounds).forEach(x=>{if(x){x.play().catch(()=>{});x.pause();x.currentTime=0;x.muted=false;}})}sound.currentTime=0;sound.play().catch(()=>{});}
+function setAmbient(name){Object.entries(sounds).forEach(([key,sound])=>{if(!sound||!['fire','water','rural'].includes(key))return;const active=key===name;if(active){sound.volume=.16;sound.play().catch(()=>{});}else{sound.pause();sound.currentTime=0;}})}
 const places={'窑洞':{x:11.7,y:27,group:'俗韵'},'莜面栲栳栳':{x:12.7,y:61.5,group:'俗韵'},'九曲灯阵':{x:63.2,y:83,group:'俗韵'},'闹红火':{x:76.4,y:76,group:'俗韵'},'中阳剪纸':{x:94.2,y:81,group:'俗韵'},'山地农耕':{x:18.6,y:18.5,group:'俗韵'},'南川河':{x:19.9,y:55,group:'风物'},'中阳龙山公园':{x:37.8,y:19,group:'风物'},'凤凰阁':{x:56.7,y:17,group:'风物'},'烈士楼':{x:47.8,y:63,group:'风物'},'梯田':{x:31.2,y:35,group:'风物'}};
 const detailHeroes={
   '窑洞':'窑洞.jpg','莜面栲栳栳':'莜面栲栳栳.jpg','闹红火':'闹红火.jpg','九曲灯阵':'九曲灯阵.jpg','山地农耕':'山地农耕.jpg','中阳剪纸':'中阳剪纸.jpg',
@@ -87,7 +91,7 @@ if(stitchScene){
   addEventListener('mouseup',()=>{if(sceneMouseDrag){sceneMouseDrag=false;stitchScene.classList.remove('dragging')}});
 }
 startIntroTransition=async function(name){if(tab==='绣工'){openIntro(name);return}current=name;const p=places[name];if(!p){openIntro(name);return}const px=tx+stage.offsetWidth*scale*p.x/100,py=ty+stage.offsetHeight*scale*p.y/100;if(px<innerWidth*.25||px>innerWidth*.75||py<innerHeight*.2||py>innerHeight*.8){tx+=innerWidth*.5-px;ty+=innerHeight*.46-py;applyTransform();await wait(380)}paperCut.style.setProperty('--hole-x',p.x+'%');paperCut.style.setProperty('--hole-y',p.y+'%');paperCut.classList.add('active');const start=performance.now(),dur=900;function frame(now){const t=Math.min(1,(now-start)/dur),e=1-Math.pow(1-t,3),r=860-680*e;paperCut.style.setProperty('--hole-rx',r+'px');paperCut.style.setProperty('--hole-ry',r+'px');if(t<1)requestAnimationFrame(frame)}requestAnimationFrame(frame);await wait(dur+80);openIntro(name)};
-$('#intro').addEventListener('click',e=>{if(document.body.classList.contains('stitch-mode')||e.target.closest('.close-btn')||e.target.closest('#more')||e.target.closest('.stitch-switch'))return;openDetail()});
+$('#intro').addEventListener('click',e=>{if(document.body.classList.contains('stitch-mode')||e.target.closest('.close-btn')||e.target.closest('#more')||e.target.closest('.stitch-switch'))return;playSound('button');openDetail()});
 function panTo(nx,ny){return new Promise(resolve=>{const sx=tx,sy=ty,ox=nx+(nx-sx)*.045,oy=ny+(ny-sy)*.045,t0=performance.now(),d1=430,d2=180;function tick(now){const elapsed=now-t0;if(elapsed<d1){const t=elapsed/d1,e=1-Math.pow(1-t,4);tx=sx+(ox-sx)*e;ty=sy+(oy-sy)*e;applyTransform();requestAnimationFrame(tick)}else if(elapsed<d1+d2){const t=(elapsed-d1)/d2,e=1-Math.pow(1-t,3);tx=ox+(nx-ox)*e;ty=oy+(ny-oy)*e;applyTransform();requestAnimationFrame(tick)}else{tx=nx;ty=ny;applyTransform();resolve()}}requestAnimationFrame(tick)})}
 startIntroTransition=async function(name){if(tab==='绣工'){openIntro(name);return}current=name;const p=getFocus(name);if(!p){openIntro(name);return}const px=tx+stage.offsetWidth*scale*p.x/100,py=ty+stage.offsetHeight*scale*p.y/100;if(px<innerWidth*.25||px>innerWidth*.75||py<innerHeight*.2||py>innerHeight*.8){await panTo(tx+innerWidth*.5-px,ty+innerHeight*.46-py)}paperCut.style.setProperty('--hole-x',p.x+'%');paperCut.style.setProperty('--hole-y',p.y+'%');paperCut.classList.add('active');const start=performance.now(),dur=900;function frame(now){const t=Math.min(1,(now-start)/dur),e=1-Math.pow(1-t,3),r=860-680*e;paperCut.style.setProperty('--hole-rx',r+'px');paperCut.style.setProperty('--hole-ry',r+'px');if(t<1)requestAnimationFrame(frame)}requestAnimationFrame(frame);await wait(dur+80);openIntro(name)};
 let pinGesture=null;$('#pins').addEventListener('pointerdown',e=>{const pin=e.target.closest?.('.pin');if(pin)pinGesture={id:e.pointerId,x:e.clientX,y:e.clientY,tx,ty,moved:false}},true);$('#pins').addEventListener('pointermove',e=>{if(!pinGesture||e.pointerId!==pinGesture.id)return;const dx=e.clientX-pinGesture.x,dy=e.clientY-pinGesture.y;if(Math.hypot(dx,dy)>6)pinGesture.moved=true;if(pinGesture.moved){tx=pinGesture.tx+dx;ty=pinGesture.ty+dy;applyTransform()}},true);$('#pins').addEventListener('pointerup',e=>{if(!pinGesture||e.pointerId!==pinGesture.id)return;const pin=e.target.closest?.('.pin');if(pinGesture.moved&&pin)pin.dataset.suppress='1';setTimeout(()=>{if(pin)delete pin.dataset.suppress},80);pinGesture=null},true);$('#pins').addEventListener('click',e=>{const pin=e.target.closest?.('.pin');if(pin?.dataset.suppress){e.preventDefault();e.stopImmediatePropagation();delete pin.dataset.suppress}},true);
@@ -99,7 +103,7 @@ openIntro=function(name){
   current=name; legacyOpenIntro(name);
   if(tab!=='绣工') return;
   document.body.classList.add('stitch-mode','stitch-notes-mode');
-  $('#stitchArt').src='assets/figma/embroidery.png';
+  $('#stitchArt').src='assets/figma/embroidery-scan.webp';
   $('#stitchExclude').style.display='none';
   $('#stitchScene').style.display='none';
   renderStitchPins(name);
@@ -133,6 +137,8 @@ setTab=function(name){
     show('home');
   }
   baseSetTab(name);
+  setAmbient(name==='风物'?'water':name==='俗韵'?'fire':null);
+  if(switching)playSound('switch');
   if(name!=='绣工'){
     paperCut.classList.remove('active');
     document.body.classList.remove('stitch-mode','stitch-notes-mode');
@@ -260,3 +266,10 @@ startIntroTransition=async function(name){
   paperCut.style.setProperty('--hole-x',p.x+'%');paperCut.style.setProperty('--hole-y',p.y+'%');paperCut.classList.add('active');
   const start=performance.now(),dur=900;function frame(now){if(transitionId!==stitchTransitionId)return;const t=Math.min(1,(now-start)/dur),e=1-Math.pow(1-t,3),r=860-680*e;paperCut.style.setProperty('--hole-rx',r+'px');paperCut.style.setProperty('--hole-ry',r+'px');if(t<1)requestAnimationFrame(frame)}requestAnimationFrame(frame);await wait(dur+80);if(transitionId!==stitchTransitionId)return;openIntro(name);
 };
+
+// Ambient and interaction sound hooks.
+const audioOriginalStart = startIntroTransition;
+startIntroTransition = async function(name){ playSound('transition'); return audioOriginalStart(name); };
+const audioOriginalDetail = openDetail;
+openDetail = function(){ setAmbient(current==='山地农耕'?'rural':null); return audioOriginalDetail(); };
+$$('[data-home],#backIntro,#more,#workInfo').forEach(button=>button.addEventListener('click',()=>playSound('button')));
